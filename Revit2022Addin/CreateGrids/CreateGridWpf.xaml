@@ -1,0 +1,30 @@
+﻿<Window x:Class="Revit2022Addin.CreateGrids.CreateGridWpf"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Revit2022Addin.CreateGrids"
+             mc:Ignorable="d" 
+             Width="400" Height="200">
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Axis X:"/>
+        <TextBox Name="txtAxisX" Grid.Column="1"/>
+
+        <Label Grid.Row="1" Content="Axis Y"/>
+        <TextBox Name="txtAxisY" Grid.Row="1" Grid.Column="1"/>
+
+        <Button Click="btnCreate" HorizontalAlignment="Right"
+                VerticalAlignment="Bottom" Height="30" Width="100" Grid.Column="1" Grid.Row="2" Content="Create"/>
+
+    </Grid>
+</Window>

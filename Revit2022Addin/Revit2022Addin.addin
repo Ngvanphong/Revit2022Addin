@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+	<AddIn Type="Command">
+		<Text>Command Revit2022Addin</Text>
+		<Description>Revit2022Addin</Description>
+		<Assembly>Revit2022Addin.dll</Assembly>
+		<FullClassName>Revit2022Addin.Command</FullClassName>
+		<ClientId>ac0c021c-c10a-44a8-b833-1fe0f8e94ea2</ClientId>
+		<VendorId>Tobic</VendorId>
+		<VendorDescription>Tobic</VendorDescription>
+	</AddIn>
+	<AddIn Type="Application">
+		<Name>Application Revit2022Addin</Name>
+		<Assembly>Revit2022Addin.dll</Assembly>
+		<FullClassName>Revit2022Addin.App</FullClassName>
+		<ClientId>248a0ed9-da2a-4e73-8699-b85c7000967b</ClientId>
+		<VendorId>Tobic</VendorId>
+		<VendorDescription>Tobic</VendorDescription>
+	</AddIn>
+</RevitAddIns>
