@@ -68,8 +68,16 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="AppConstants.cs" />
+    <Compile Include="Button\CreateBeamButton.cs" />
     <Compile Include="Button\CreateGridButton.cs" />
     <Compile Include="Command.cs" />
+    <Compile Include="CreateBeam\CreateBeamAppShow.cs" />
+    <Compile Include="CreateBeam\CreateBeamBinding.cs" />
+    <Compile Include="CreateBeam\CreateBeamHandler.cs" />
+    <Compile Include="CreateBeam\CreateBeamWpf.xaml.cs">
+      <DependentUpon>CreateBeamWpf.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CreateBeam\GetTypeFamilyHandler.cs" />
     <Compile Include="CreateGrids\CreateGridAppShow.cs" />
     <Compile Include="CreateGrids\CreateGridBinding.cs" />
     <Compile Include="CreateGrids\CreateGridHandler.cs" />
@@ -94,6 +102,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="CreateBeam\CreateBeamWpf.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CreateGrids\CreateGridWpf.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

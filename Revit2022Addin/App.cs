@@ -13,6 +13,7 @@ namespace Revit2022Addin
         public Result OnStartup(UIControlledApplication a)
         {
             new CreateGridButton().CreateGrid(a);
+            new CreateBeamButton().CreateBeam(a);
             return Result.Succeeded;
         }
 
