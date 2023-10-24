@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Linq;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,7 +20,7 @@ namespace Revit2022Addin.CreateFloor
             UIDocument uiDoc = commandData.Application.ActiveUIDocument;
             Document doc= uiDoc.Document;
 
-            CreateFloorAppShow.ShowForm();
+            
 
             var allRoom = new FilteredElementCollector(doc, doc.ActiveView.Id)
                 .OfCategory(BuiltInCategory.OST_Rooms).WhereElementIsNotElementType().Cast<Room>().ToList();
@@ -28,8 +29,7 @@ namespace Revit2022Addin.CreateFloor
             optionRoom.SpatialElementBoundaryLocation = SpatialElementBoundaryLocation.Finish;
             
             
-            List<List<Line>> listLineRoomsCavas= new List<List<Line>>();
-            List<List<Curve>> listCurveRooms = new List<List<Curve>>();
+            List<RoomInformation> listRoomsInformationCavas= new List<RoomInformation>();
 
             foreach ( var room in allRoom )
             {
@@ -49,18 +49,23 @@ namespace Revit2022Addin.CreateFloor
                             boundarySegmentMaxs = segementItems;
                         }
                     }
-                    List<Curve> listCurve = new List<Curve>();
+                   
                     List<Line> listLine = new List<Line>();
                     foreach(var cureSeg in boundarySegmentMaxs )
                     {
                         Curve curve= cureSeg.GetCurve();
-                        listCurve.Add( curve );
                         Line line = curve as Line;
                         if (line != null) listLine.Add(line );
                         
                     }
-                    listCurveRooms.Add( listCurve );
-                    listLineRoomsCavas.Add( listLine );
+
+                    // luu vao class Room Information
+                    RoomInformation roomInfo= new RoomInformation();
+                    roomInfo.ListLine= listLine;
+                    roomInfo.NameRoom= room.Name;
+                    roomInfo.LocationRoom = (room.Location as LocationPoint).Point;
+                   
+                    listRoomsInformationCavas.Add(roomInfo);
 
                 }
             }
@@ -69,9 +74,9 @@ namespace Revit2022Addin.CreateFloor
             double yMin = 100000000000;
             double xMax = -100000000000;
             double yMax = -100000000000;
-            foreach (var listLine in listLineRoomsCavas)
+            foreach (var rooomInformaiton in listRoomsInformationCavas)
             {
-                foreach (Line line in listLine)
+                foreach (Line line in rooomInformaiton.ListLine)
                 {
                     double x1 = line.GetEndPoint(0).X;
                     double x2= line.GetEndPoint(1).X;
@@ -91,21 +96,13 @@ namespace Revit2022Addin.CreateFloor
                 }
             }
 
-            double xMidRe = (xMin + xMax) / 2; // diem giua revit
-            double yMidRe= (yMin + yMax) / 2;//
-            double widthRe = (xMax - xMin);
-            
+            CreateFloorAppShow.Xmin = xMin;
+            CreateFloorAppShow.Ymin = yMin;
+            CreateFloorAppShow.Xmax = xMax;
+            CreateFloorAppShow.Ymax = yMax;
+            CreateFloorAppShow.ListRoomInformation = listRoomsInformationCavas;
 
-
-            foreach (var listLine in listLineRoomsCavas)
-            {
-                foreach(Line line in listLine )
-                {
-                    CanvasUnitilies.CreateLine(line, CreateFloorAppShow.formCreateFloors.canvasFloor,xMidRe,yMidRe, widthRe);
-                }
-            }
-
-
+            CreateFloorAppShow.ShowForm();
 
             return Result.Succeeded;
         }

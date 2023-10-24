@@ -14,37 +14,32 @@ namespace Revit2022Addin.CreateFloor
 {
     public class CanvasUnitilies
     {
-        public static void CreateLine(DB.Line lineRevit,Canvas canvas,
-           double xMidRe, double yMidRe,double widthRe)
+        public static void CreateLine(double x1,double y1, double x2, double y2,Canvas canvas,double scale)
         {
             Line lineCavas= new Line();
-            lineCavas.X1 = lineRevit.GetEndPoint(0).X * 304.8 * 3.77  + xMidRe * 304.8 * 3.77;
-            lineCavas.Y1 = -lineRevit.GetEndPoint(0).Y * 304.8 * 3.77 + yMidRe * 304.8 * 3.77 +   40;
-            lineCavas.X2 = lineRevit.GetEndPoint(1).X * 304.8 * 3.77 + xMidRe * 304.8 * 3.77;
-            lineCavas.Y2 = -lineRevit.GetEndPoint(1).Y * 304.8 * 3.77 + yMidRe * 304.8 * 3.77 +    40;
-
+            lineCavas.X1 = x1;
+            lineCavas.Y1 = y1;
+            lineCavas.X2 = x2;
+            lineCavas.Y2 = y2;
             lineCavas.Stroke = new SolidColorBrush(Colors.Green);
-            lineCavas.StrokeThickness = 2;
+            lineCavas.StrokeThickness = 2 / scale;
             lineCavas.Visibility= System.Windows.Visibility.Visible;
-          
-            
             canvas.Children.Add(lineCavas);
 
         }
 
-        public double GetZoom(double x, double y,double xMid, double yMid,double widthCavas, double heightCanvas,double widthRe)
+        public static void CreateText(double x1, double y1, string nameRoom, Canvas canvas,double scale)
         {
-            DB.XYZ vectorMove = DB.XYZ.Zero - new DB.XYZ(xMid, yMid, 0);
-            double xToMid = (new DB.XYZ(x, y, 0) + vectorMove).X;
-            double yToMid = (new DB.XYZ(x, y, 0) + vectorMove).Y;
+            TextBlock textBlock = new TextBlock();
+            textBlock.Text = nameRoom;
+            textBlock.Foreground = new SolidColorBrush(Colors.Red);
+            textBlock.FontSize = 13 / scale;
 
-            double sclale = widthCavas / widthRe;
-
-
-
-
-
-
+            Canvas.SetTop(textBlock, y1);
+            Canvas.SetLeft(textBlock, x1);
+            canvas.Children.Add(textBlock);
         }
+
+       
     }
 }

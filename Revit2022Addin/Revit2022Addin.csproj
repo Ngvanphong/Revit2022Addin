@@ -86,6 +86,7 @@
     <Compile Include="CreateFloor\CreateFloorWpf.xaml.cs">
       <DependentUpon>CreateFloorWpf.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CreateFloor\RoomInformation.cs" />
     <Compile Include="CreateGrids\CreateGridAppShow.cs" />
     <Compile Include="CreateGrids\CreateGridBinding.cs" />
     <Compile Include="CreateGrids\CreateGridHandler.cs" />

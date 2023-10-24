@@ -1,20 +1,33 @@
-﻿<Window x:Class="Revit2022Addin.CreateFloor.CreateFloorWpf"
+﻿<Window x:Name="Loading" x:Class="Revit2022Addin.CreateFloor.CreateFloorWpf"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Revit2022Addin.CreateFloor"
              mc:Ignorable="d" 
-             Width="500" Height="500">
+             Width="500" Height="500" Loaded="Loading_Loaded">
     <Grid Margin="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="101*"/>
+            <ColumnDefinition Width="230*"/>
+            <ColumnDefinition Width="159*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
 
-        <Canvas Name="canvasFloor">
-            
+        <Canvas Name="canvasFloor" Grid.ColumnSpan="3">
+            <Canvas.LayoutTransform>
+                <ScaleTransform ScaleY="{Binding Scale}" ScaleX="{Binding Scale}">
+                </ScaleTransform>
+            </Canvas.LayoutTransform>
         </Canvas>
-        <Button Click="btnCreateFloor" HorizontalAlignment="Right" Width="100" Grid.Row="1" Content="OK" />
+        <Button Click="btnCreateFloor" 
+                HorizontalAlignment="Left" 
+                Width="100" Content="OK" 
+                Grid.Column="2" 
+                Margin="59,444,0,0"
+                Grid.RowSpan="2" />
     </Grid>
 </Window>
