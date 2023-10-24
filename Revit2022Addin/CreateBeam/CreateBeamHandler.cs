@@ -42,11 +42,13 @@ namespace Revit2022Addin.CreateBeam
                     using(Transaction t = new Transaction(doc, "CreateBeam"))
                     {
                         t.Start();
+                        if (!familySymbol.IsActive) familySymbol.Activate();
                         for(int i= 0; i<listIntersectionPoint.Count-1; i++)
                         {
                             Line line = Line.CreateBound(listIntersectionPoint[i], listIntersectionPoint[i + 1]);
                             var beam= doc.Create.NewFamilyInstance(line, familySymbol, 
                                 doc.ActiveView.GenLevel, Autodesk.Revit.DB.Structure.StructuralType.Beam);
+
                         }
                         t.Commit();
                     }

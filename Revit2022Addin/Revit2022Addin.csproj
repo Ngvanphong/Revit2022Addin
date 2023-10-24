@@ -69,6 +69,7 @@
     <Compile Include="App.cs" />
     <Compile Include="AppConstants.cs" />
     <Compile Include="Button\CreateBeamButton.cs" />
+    <Compile Include="Button\CreateFloorButton.cs" />
     <Compile Include="Button\CreateGridButton.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="CreateBeam\CreateBeamAppShow.cs" />
@@ -78,6 +79,13 @@
       <DependentUpon>CreateBeamWpf.xaml</DependentUpon>
     </Compile>
     <Compile Include="CreateBeam\GetTypeFamilyHandler.cs" />
+    <Compile Include="CreateFloor\CanvasUnitilies.cs" />
+    <Compile Include="CreateFloor\CreateFloorAppShow.cs" />
+    <Compile Include="CreateFloor\CreateFloorBinding.cs" />
+    <Compile Include="CreateFloor\CreateFloorHandler.cs" />
+    <Compile Include="CreateFloor\CreateFloorWpf.xaml.cs">
+      <DependentUpon>CreateFloorWpf.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CreateGrids\CreateGridAppShow.cs" />
     <Compile Include="CreateGrids\CreateGridBinding.cs" />
     <Compile Include="CreateGrids\CreateGridHandler.cs" />
@@ -103,6 +111,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="CreateBeam\CreateBeamWpf.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreateFloor\CreateFloorWpf.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
