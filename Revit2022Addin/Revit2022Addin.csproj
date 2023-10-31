@@ -69,8 +69,10 @@
     <Compile Include="App.cs" />
     <Compile Include="AppConstants.cs" />
     <Compile Include="Button\CreateBeamButton.cs" />
+    <Compile Include="Button\CreateColumnButton.cs" />
     <Compile Include="Button\CreateFloorButton.cs" />
     <Compile Include="Button\CreateGridButton.cs" />
+    <Compile Include="Button\GetGeometryButton.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="CreateBeam\CreateBeamAppShow.cs" />
     <Compile Include="CreateBeam\CreateBeamBinding.cs" />
@@ -79,6 +81,12 @@
       <DependentUpon>CreateBeamWpf.xaml</DependentUpon>
     </Compile>
     <Compile Include="CreateBeam\GetTypeFamilyHandler.cs" />
+    <Compile Include="CreateColumn\CreaateColumnBinding.cs" />
+    <Compile Include="CreateColumn\CreateColumnAppShow.cs" />
+    <Compile Include="CreateColumn\CreateColumnHanlder.cs" />
+    <Compile Include="CreateColumn\CreateColumnWpf.xaml.cs">
+      <DependentUpon>CreateColumnWpf.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CreateFloor\CanvasUnitilies.cs" />
     <Compile Include="CreateFloor\CreateFloorAppShow.cs" />
     <Compile Include="CreateFloor\CreateFloorBinding.cs" />
@@ -94,6 +102,7 @@
       <DependentUpon>CreateGridWpf.xaml</DependentUpon>
     </Compile>
     <Compile Include="Extension.cs" />
+    <Compile Include="GetGeometry\GetGeometryBinding.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -112,6 +121,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="CreateBeam\CreateBeamWpf.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreateColumn\CreateColumnWpf.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

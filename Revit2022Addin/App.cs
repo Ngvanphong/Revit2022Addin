@@ -14,7 +14,9 @@ namespace Revit2022Addin
         {
             new CreateGridButton().CreateGrid(a);
             new CreateBeamButton().CreateBeam(a);
-            new CreateFloorButton().CreateFloor(a); 
+            new CreateFloorButton().CreateFloor(a);
+            new GetGeometryButton().Geometry(a);
+            new CreateColumnButton().CreateColumn(a);
             return Result.Succeeded;
         }
 
