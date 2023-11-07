@@ -37,7 +37,7 @@ namespace Revit2022Addin.Button
 
             ImageSource imageSource = Extension.GetImageSource(Resources.topo);
             PushButtonData testButton = new PushButtonData("CreateGrids", "Create \n Grids",
-                Assembly.GetExecutingAssembly().Location, "Revit2022Addin.CreateGrids.CreateGridBinding");
+                Assembly.GetExecutingAssembly().Location, "Revit2022Addin.BeamTypeExcel.BeamTypeExcelBindind");
             testButton.ToolTip = "Create grids";
             testButton.LongDescription = "Create grids";
             testButton.Image = imageSource;
