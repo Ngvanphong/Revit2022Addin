@@ -66,6 +66,7 @@ namespace Revit2022Addin.CreateFloor
             double height= CreateFloorAppShow.Ymax -  CreateFloorAppShow.Ymin;
             canvasFloor.Width = width * 304.8 * 3.7;
             canvasFloor.Height = height * 304.8 * 3.7;
+
             double scaleX = 400 / (width * 304.8 * 3.7);
             double scaleY = 400 / (height * 304.8 * 3.7);
             Scale= Math.Min(scaleX, scaleY);

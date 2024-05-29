@@ -27,8 +27,7 @@ namespace Revit2022Addin.CreateFloor
 
             SpatialElementBoundaryOptions optionRoom= new SpatialElementBoundaryOptions();
             optionRoom.SpatialElementBoundaryLocation = SpatialElementBoundaryLocation.Finish;
-            
-            
+               
             List<RoomInformation> listRoomsInformationCavas= new List<RoomInformation>();
 
             foreach ( var room in allRoom )
@@ -39,7 +38,7 @@ namespace Revit2022Addin.CreateFloor
                     IList<BoundarySegment> boundarySegmentMaxs = new List<BoundarySegment>();
                     // Tim max boundary
                     double lengthMax = 0;
-                    foreach(var segementItems in roomSegments )
+                    foreach(var segementItems in roomSegments)
                     {
                         double lengthItem = 0;
                         foreach (var item in segementItems) lengthItem += item.GetCurve().Length;
@@ -85,6 +84,7 @@ namespace Revit2022Addin.CreateFloor
 
                     double minX= Math.Min(x1, x2);
                     xMin= Math.Min(minX, xMin);
+
                     double minY = Math.Min(y1, y2);
                     yMin = Math.Min(yMin, minY);
 
